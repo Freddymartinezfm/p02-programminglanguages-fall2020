@@ -1,0 +1,11 @@
+//EXTRA id DEFINITION
+
+[_a-zA-Z][_a-zA-Z0-9]*                          return TokenMgr(ID);
+
+// real int
+[0-9]*\.[0-9]*([Ee][+-]?[0-9]+)?	return tokenMgr(REALIT);
+
+// chrlit
+['][]+[']                                       return TokenMgr(CHRLIT);
+
+

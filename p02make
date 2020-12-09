@@ -1,0 +1,32 @@
+#------------------------------------------------------------------
+# File p02make contains instructions for creating file p02
+#------------------------------------------------------------------
+# Author Identification Block
+#Author 1:	Mr. Freddy Martinez
+#Student ID:	*20130721
+#E-Mail:	fmartinez@uco.edu
+#Course:	CMSC 5023 – Programming Languages
+#CRN:		13855, Autumn, 2020
+#Project:	p02
+#Due:		September 10, 2020
+#Project Account Number:	tt160
+
+OBJ = p02.o p02lex.o
+
+
+p02:	${OBJ}
+	g++  -o p02  ${OBJ} -ly -lm
+
+p02.o:	p02.cpp p02lex.h
+	g++ -c -g p02.cpp
+p02lex.cpp:	p02lex.l
+	lex p02lex.l
+	mv lex.yy.c p02lex.cpp
+p02lex.o:	p02lex.cpp p02lex.h
+	g++ -c -g p02lex.cpp
+
+clean:	
+	rm *.o
+	rm p02lex.cpp
+	rm p02
+	
